@@ -261,13 +261,20 @@ const FeatureSection = forwardRef(function FeatureSection(_, ref) {
       style={{ y: sectionY, opacity: sectionOpacity, scale: sectionScale }}
       className="relative py-24 px-0 rounded-t-3xl overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-[var(--color-bg)] to-[var(--color-bg)]" />
+      {/* Scenic background - use features.png from public folder */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/features.png)' }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-black/60" aria-hidden />
+      <div
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, #059669 1px, transparent 0)',
           backgroundSize: '32px 32px',
         }}
+        aria-hidden
       />
 
       <div className="relative">
