@@ -163,7 +163,7 @@ function PhoneFrame({ img, alt = 'Feature preview' }) {
       >
         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-6 rounded-full bg-black z-10" />
         <div className="relative overflow-hidden rounded-[2rem] aspect-[9/19.5] bg-neutral-100">
-          <img src={img} alt={alt} className="w-full h-full object-cover object-top" />
+          <img src={img} alt={alt} className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
         </div>
       </motion.div>
     </motion.div>
@@ -172,29 +172,29 @@ function PhoneFrame({ img, alt = 'Feature preview' }) {
 
 function FeatureSlide({ feature, isActive }) {
   return (
-    <div className="w-full min-w-full flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center px-4 md:px-12 py-8 md:py-12">
+    <div className="w-full min-w-full flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center px-3 sm:px-4 md:px-12 py-8 md:py-12">
       <PhoneFrame img={feature.img} alt={feature.title} />
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: isActive ? 1 : 0.7, x: 0 }}
         transition={{ duration: 0.4 }}
-        className="max-w-lg"
+        className="w-full min-w-0 max-w-lg"
       >
-        <div className="relative overflow-hidden rounded-3xl bg-white/95 backdrop-blur-sm p-8 sm:p-10 shadow-xl shadow-black/5 border border-[var(--color-border)] text-center md:text-left hover:shadow-2xl hover:shadow-[#059669]/10 hover:border-[#059669]/30 transition-all duration-300">
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-sm p-4 sm:p-6 md:p-8 lg:p-10 shadow-xl shadow-black/5 border border-[var(--color-border)] text-center md:text-left hover:shadow-2xl hover:shadow-[#059669]/10 hover:border-[#059669]/30 transition-all duration-300">
           {/* Accent line */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#059669] to-[#10b981]" />
-          <div className="flex items-center gap-4 mb-6">
-          <motion.div
-            whileHover={{ scale: 1.05, rotate: 3 }}
-            className="flex-shrink-0 p-4 rounded-2xl bg-neutral-900 text-white shadow-lg shadow-black/20"
-          >
-            {feature.icon}
-          </motion.div>
-          <h3 className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] tracking-tight">
-            {feature.title}
-          </h3>
-        </div>
-          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] leading-[1.7] font-medium">
+          <div className="flex items-start sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <motion.div
+              whileHover={{ scale: 1.05, rotate: 3 }}
+              className="flex-shrink-0 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-neutral-900 text-white shadow-lg shadow-black/20"
+            >
+              {feature.icon}
+            </motion.div>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] tracking-tight min-w-0">
+              {feature.title}
+            </h3>
+          </div>
+          <p className="text-sm sm:text-base md:text-lg text-[var(--color-text-secondary)] leading-[1.7] font-medium">
             {feature.description}
           </p>
         </div>

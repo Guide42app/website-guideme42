@@ -3,6 +3,7 @@ import { useScroll, useTransform, motion, useSpring } from 'framer-motion'
 import guideme42icon from '../assets/guideme42icon.png'
 
 const TOTAL_FRAMES = 240
+const MIN_FRAMES_TO_SHOW = 5
 
 function padZeros(num, places) {
   return String(num).padStart(places, '0')
@@ -16,19 +17,28 @@ export default function HeroSection() {
   const imagesRef = useRef([])
   const currentFrameDrawn = useRef(-1)
 
+  // Load first few frames immediately so we can show the hero; preload the rest in background
   useEffect(() => {
+    const loadFrame = (i) =>
+      new Promise((resolve) => {
+        const img = new Image()
+        img.src = `/guideme42_sequence/${padZeros(i, 5)}.jpg`
+        img.onload = () => {
+          imagesRef.current[i] = img
+          setLoadedImages((c) => c + 1)
+          resolve()
+        }
+        img.onerror = () => resolve()
+      })
+
     const preloadImages = async () => {
-      for (let i = 1; i <= TOTAL_FRAMES; i++) {
-        await new Promise((resolve) => {
-          const img = new Image()
-          img.src = `/guideme42_sequence/${padZeros(i, 5)}.jpg`
-          img.onload = () => {
-            imagesRef.current[i] = img
-            setLoadedImages((c) => c + 1)
-            resolve()
-          }
-          img.onerror = () => resolve()
-        })
+      // Load first MIN_FRAMES_TO_SHOW frames so hero can show quickly
+      for (let i = 1; i <= MIN_FRAMES_TO_SHOW; i++) {
+        await loadFrame(i)
+      }
+      // Preload the rest in background (no await) so animation is smooth as user scrolls
+      for (let i = MIN_FRAMES_TO_SHOW + 1; i <= TOTAL_FRAMES; i++) {
+        loadFrame(i)
       }
     }
     preloadImages()
@@ -131,7 +141,7 @@ export default function HeroSection() {
           className="absolute top-0 left-0 w-full h-full z-0"
           style={{ width: '100%', height: '100%', display: 'block' }}
         />
-        {loadedImages < Math.min(60, TOTAL_FRAMES) && (
+        {loadedImages < MIN_FRAMES_TO_SHOW && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#E8ECEC]">
             <div className="w-16 h-16 border-4 border-black/10 border-t-black/80 rounded-full animate-spin mb-4" />
             <p className="text-black/60 font-medium tracking-wide">Loading GuideMe42 experience... {progressPercent}%</p>
