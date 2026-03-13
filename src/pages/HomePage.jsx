@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import Nav from '../components/Nav'
 import HeroSection from '../components/HeroSection'
 import AboutSection from '../components/AboutSection'
@@ -7,14 +6,12 @@ import DownloadSection from '../components/DownloadSection'
 import Footer from '../components/Footer'
 
 export default function HomePage() {
-  const featuresRef = useRef(null)
-
   return (
-    <div className="min-h-screen text-black">
-      <Nav featuresSectionRef={featuresRef} />
+    <div className="relative min-h-screen text-black">
+      <Nav />
       <HeroSection />
       <AboutSection />
-      <FeatureSection ref={featuresRef} />
+      <FeatureSection />
       <DownloadSection />
       <Footer />
     </div>

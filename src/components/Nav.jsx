@@ -9,18 +9,12 @@ const links = [
   { href: '/#download', label: 'Download' },
 ]
 
-export default function Nav({ featuresSectionRef }) {
+export default function Nav() {
   const [open, setOpen] = useState(false)
-  const fallbackRef = useRef(null)
-  const targetRef = featuresSectionRef || fallbackRef
 
   const { scrollY } = useScroll()
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ['start end', 'start start'],
-  })
   const logoOpacity = useTransform(scrollY, [0, 280], [0, 1])
-  const navBg = useTransform(scrollYProgress, [0, 0.05], [0, 1])
+  const navBg = useTransform(scrollY, [0, 400], [0, 1])
   const backgroundColor = useTransform(navBg, [0, 1], ['transparent', 'rgba(255,255,255,0.98)'])
   const backdropFilter = useTransform(navBg, [0, 1], ['none', 'blur(8px)'])
 

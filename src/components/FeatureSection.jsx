@@ -1,11 +1,104 @@
 import { useRef, forwardRef, useCallback, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import f1Img from '../assets/f1.PNG'
+import f1Img from '../assets/features/f1.PNG'
+import f2Img from '../assets/features/f2.PNG'
+import f3Img from '../assets/features/f3.jpg'
+import f4Img from '../assets/features/f4.PNG'
+import f5Img from '../assets/features/f5.PNG'
+import f6Img from '../assets/features/f6.jpg'
+import f7Img from '../assets/features/f7.PNG'
+import f8Img from '../assets/features/f8.PNG'
+import f9Img from '../assets/features/f9.PNG'
+import f10Img from '../assets/features/f10.jpg'
+import f11Img from '../assets/features/f11.PNG'
+import f12Img from '../assets/features/f12.PNG'
+import f13Img from '../assets/features/f13.PNG'
 
 const features = [
   {
-    title: 'Trip Planning',
-    description: 'Build your perfect itinerary day by day with an intuitive, visual layout. Add destinations, activities, flight details, and personal notes all in one place. Stay organized from the first spark of inspiration to touchdown—and never miss a single moment of your adventure.',
+    img: f1Img,
+    title: 'Your Command Center',
+    description: 'Everything you need, right where you need it. The home screen puts your trips, feed, and next adventure at your fingertips. One tap to plan, explore, or jump back in—so you spend less time searching and more time adventuring.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+    ),
+  },
+  {
+    img: f2Img,
+    title: 'Discover & Get Inspired',
+    description: 'Swipe into your feed and discover trips, tips, and treasures from travelers like you. Hand-picked recommendations, trending destinations, and stories from the road—all curated to spark your next adventure. Inspiration is always one scroll away.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+      </svg>
+    ),
+  },
+  {
+    img: f3Img,
+    title: 'Milestone Your Journey',
+    description: 'See your trip come to life with a visual timeline of every milestone. From flights and hotels to activities and must-dos, map out each step so nothing slips through the cracks. Plan with clarity and travel with confidence.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    ),
+  },
+  {
+    img: f4Img,
+    title: 'Jeeva: Plan Trips With AI',
+    description: 'Meet Jeeva—your AI trip designer. Describe your dream trip, set your vibe, and watch as Jeeva crafts a tailored itinerary in seconds. Smart suggestions, optimized routes, and personalized recommendations. Plan like a pro without the homework.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+  },
+  {
+    img: f5Img,
+    title: 'Your Trip Dashboard',
+    description: 'Members, packing lists, and expenses—all in one place. The dashboard keeps your trip organized and everyone aligned. See who’s coming, what to pack, and where the money goes. One screen to rule them all.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+      </svg>
+    ),
+  },
+  {
+    img: f6Img,
+    title: 'Split Smart, Stay Friends',
+    description: 'Track every expense as you go—meals, activities, accommodation, the works. Split bills fairly with a single tap. No spreadsheets, no awkward end-of-trip math, no chasing people for cash. The app does the work so your group stays friends.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
+    img: f7Img,
+    title: 'Thread It All Together',
+    description: 'Keep every trip conversation in one place. Discuss plans, share updates, ask questions—all in organized threads. No more lost messages or scattered group chats. Everyone stays looped in and ready to go.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+    ),
+  },
+  {
+    img: f8Img,
+    title: 'Deals That Feel Like Steals',
+    description: 'Find discounts, promos, and offers tailored to your trip. Hotels, flights, activities—all in one deals hub. Save more and stretch your travel budget further. Your wallet will thank you.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+      </svg>
+    ),
+  },
+  {
+    img: f9Img,
+    title: 'Your Day-by-Day Blueprint',
+    description: 'Build the perfect itinerary, one day at a time. Drop in places, activities, and notes—see it all laid out in a clean, visual flow. Rearrange with a tap, add details on the fly. Your trip, your way, beautifully organized.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -13,8 +106,19 @@ const features = [
     ),
   },
   {
-    title: 'Discover Places',
-    description: 'Uncover hidden gems and hand-picked recommendations for every destination. Get insider tips from real travelers, curated spots locals love, and personalized suggestions that match your style. Explore the world like a local—not a tourist with a guidebook.',
+    img: f10Img,
+    title: 'Dark Mode on the House',
+    description: 'Easy on the eyes, day or night. Dark mode is included at no extra cost—no premium paywall, no strings attached. Toggle it on and travel in comfort, whether you’re planning at midnight or exploring in bright sun.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+    ),
+  },
+  {
+    img: f11Img,
+    title: 'Every Place, Every Detail',
+    description: 'Dive deep into any destination. Photos, tips, opening hours, reviews—everything you need to decide and explore. No more tab-hopping or guesswork. Know before you go.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -23,35 +127,28 @@ const features = [
     ),
   },
   {
-    title: 'Add Trip Members',
-    description: 'Invite friends and family to your trip with a single tap. Collaborate on itineraries in real time—add ideas, vote on activities, and plan together from anywhere. Everyone stays on the same page, so there are no surprises when you hit the road.',
+    img: f12Img,
+    title: 'Map the Smart Route',
+    description: 'Optimize your stops in map view. See the best route across your day’s destinations—less back-tracking, more exploring. A smarter path means more time for what matters: the adventure.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
       </svg>
     ),
   },
   {
-    title: 'Split Costs',
-    description: 'Track every expense as you go—meals, activities, accommodation, and extras. Split bills fairly and instantly with smart algorithms that handle the math for you. No more awkward end-of-trip calculations or chasing people for money. Split with a tap and stay friends.',
+    img: f13Img,
+    title: 'List View, Smarter Order',
+    description: 'Prefer lists over maps? Get the same smart route optimization in a clean, scrollable list. Stops are ordered for efficiency—just follow the list and make the most of every stop. Simple, clear, and optimized.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Share Guides',
-    description: "Turn your adventures into beautiful, shareable guides. Export and share with friends, family, or the world. Create polished trip diaries with photos, tips, and routes—so others can follow in your footsteps. Your best trip could inspire someone else's journey of a lifetime.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
       </svg>
     ),
   },
 ]
 
-function PhoneFrame({ img }) {
+function PhoneFrame({ img, alt = 'Feature preview' }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -66,7 +163,7 @@ function PhoneFrame({ img }) {
       >
         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-6 rounded-full bg-black z-10" />
         <div className="relative overflow-hidden rounded-[2rem] aspect-[9/19.5] bg-neutral-100">
-          <img src={img} alt="Feature preview" className="w-full h-full object-cover object-top" />
+          <img src={img} alt={alt} className="w-full h-full object-cover object-top" />
         </div>
       </motion.div>
     </motion.div>
@@ -76,7 +173,7 @@ function PhoneFrame({ img }) {
 function FeatureSlide({ feature, isActive }) {
   return (
     <div className="w-full min-w-full flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center px-4 md:px-12 py-8 md:py-12">
-      <PhoneFrame img={f1Img} />
+      <PhoneFrame img={feature.img} alt={feature.title} />
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: isActive ? 1 : 0.7, x: 0 }}
