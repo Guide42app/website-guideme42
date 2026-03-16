@@ -9,7 +9,7 @@ const FeatureSection = lazy(() => import('../components/FeatureSection'))
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen text-black bg-[#E8ECEC] sm:bg-transparent">
+    <div className="relative min-h-screen text-black">
       <Nav />
       <HeroSection />
       <AboutSection />

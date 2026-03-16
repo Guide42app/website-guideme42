@@ -74,14 +74,8 @@ export default function HeroSection() {
           canvas.height = bufferHeight
         }
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-        // On small devices, draw image at reduced width/height (0.6 at 320px → 1 at 768px+)
-        const isSmall = width < 768 || height < 500
-        const sizeFactor = isSmall
-          ? Math.min(1, Math.max(0.6, 0.6 + (Math.min(width, height) - 320) / 600))
-          : 1
-        const targetW = width * sizeFactor
-        const targetH = height * sizeFactor
-        const scale = Math.max(targetW / img.width, targetH / img.height)
+        // Always cover full width and height (no responsive scaling)
+        const scale = Math.max(width / img.width, height / img.height)
         const drawWidth = img.width * scale
         const drawHeight = img.height * scale
         const dx = (width - drawWidth) / 2
@@ -131,8 +125,8 @@ export default function HeroSection() {
   const progressPercent = Math.round((loadedImages / TOTAL_FRAMES) * 100)
 
   return (
-    <div ref={containerRef} id="hero" className="relative w-full h-[350vh] md:h-[500vh] bg-[#E8ECEC] font-sans -mt-[140px] pt-[140px] sm:mt-0 sm:pt-0">
-      <div className="sticky top-0 left-0 right-0 w-full overflow-hidden -top-[140px] h-[calc(100dvh+140px)] min-h-[calc(100vh+140px)] sm:top-0 sm:h-screen sm:min-h-screen">
+    <div ref={containerRef} id="hero" className="relative w-full h-[350vh] md:h-[500vh] bg-[#E8ECEC] font-sans">
+      <div className="sticky top-0 left-0 right-0 w-full min-h-screen h-[100dvh] sm:h-screen overflow-hidden">
         <canvas
           ref={canvasRef}
           className="absolute top-0 left-0 w-full h-full z-0"
