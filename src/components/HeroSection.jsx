@@ -131,8 +131,8 @@ export default function HeroSection() {
   const progressPercent = Math.round((loadedImages / TOTAL_FRAMES) * 100)
 
   return (
-    <div ref={containerRef} id="hero" className="relative w-full h-[350vh] md:h-[500vh] bg-[#E8ECEC] font-sans">
-      <div className="sticky top-0 left-0 right-0 w-full min-h-screen h-[100dvh] sm:h-screen overflow-hidden">
+    <div ref={containerRef} id="hero" className="relative w-full h-[350vh] md:h-[500vh] bg-[#E8ECEC] font-sans -mt-[140px] pt-[140px] sm:mt-0 sm:pt-0">
+      <div className="sticky top-0 left-0 right-0 w-full overflow-hidden -top-[140px] h-[calc(100dvh+140px)] min-h-[calc(100vh+140px)] sm:top-0 sm:h-screen sm:min-h-screen">
         <canvas
           ref={canvasRef}
           className="absolute top-0 left-0 w-full h-full z-0"
@@ -144,21 +144,21 @@ export default function HeroSection() {
             <p className="text-black/60 font-medium tracking-wide">Loading GuideMe42 experience... {progressPercent}%</p>
           </div>
         )}
-        <div className="absolute inset-0 pointer-events-none z-10 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
+        <div className="absolute inset-0 pointer-events-none z-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 min-w-0 max-w-7xl mx-auto w-full">
           {/* GuideMe42 text + iPhone frame: same animation, disappear together */}
-          <motion.div style={{ opacity: opacity0, y: y0 }} className="absolute inset-0 flex flex-col items-start justify-start pt-[10vh] sm:pt-[16vh] md:pt-[18vh] lg:pt-[20vh] pl-2 pr-3 sm:pl-4 md:pl-6 lg:pl-4 lg:-ml-16">
-            <div className="relative -mt-2 sm:-ml-4 pr-3 sm:pr-8 pt-3 sm:pt-6 pb-3 sm:pb-6 pl-3 sm:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw]">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-sans text-left tracking-tight mb-2 sm:mb-4 flex items-center gap-2 sm:gap-3" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
-                <img src={guideme42icon} alt="" className="h-8 w-8 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 xl:h-20 xl:w-20 object-cover rounded-full shrink-0" />
+          <motion.div style={{ opacity: opacity0, y: y0 }} className="absolute inset-0 flex flex-col items-start justify-start pt-[10vh] sm:pt-[14vh] md:pt-[16vh] lg:pt-[18vh] xl:pt-[20vh] pl-2 pr-3 sm:pl-4 md:pl-6 md:pr-6 lg:pl-10 lg:pr-8 xl:pl-12 xl:-ml-8 2xl:-ml-16">
+            <div className="relative -mt-2 sm:-ml-4 pr-3 sm:pr-6 md:pr-8 pt-3 sm:pt-5 md:pt-6 pb-3 sm:pb-5 md:pb-6 pl-3 sm:pl-5 md:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw] md:max-w-[85vw] lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-sans text-left tracking-tight mb-2 sm:mb-3 md:mb-4 flex items-center gap-2 sm:gap-3 flex-wrap" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
+                <img src={guideme42icon} alt="" className="h-8 w-8 sm:h-11 sm:w-11 md:h-14 md:w-14 lg:h-16 lg:w-16 xl:h-20 xl:w-20 object-cover rounded-full shrink-0" />
                 <span><span className="text-black font-semibold">GuideMe</span><span className="text-[#059669] font-semibold">42</span></span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/70 font-medium tracking-wide text-left max-w-md" style={{ letterSpacing: '0.02em' }}>Plot your path. Pack your bags. Go.</p>
+              <p className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-black/70 font-medium tracking-wide text-left max-w-md md:max-w-lg lg:max-w-xl" style={{ letterSpacing: '0.02em' }}>Plot your path. Pack your bags. Go.</p>
             </div>
           </motion.div>
           {/* iPhone frame – right on sm+, below title on mobile; disappears with GuideMe42 text (opacity0, y0) */}
           <motion.div
             style={{ opacity: opacity0, y: y0 }}
-            className="absolute right-2 top-[34vh] w-[180px] max-w-[50vw] sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:max-w-none sm:w-[200px] md:right-8 md:w-[260px] lg:right-12 lg:w-[320px] xl:right-16 z-10"
+            className="absolute right-2 top-[34vh] w-[180px] max-w-[50vw] sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:max-w-none sm:w-[200px] md:right-8 md:w-[260px] lg:right-10 lg:w-[300px] xl:right-14 xl:w-[340px] 2xl:right-16 2xl:w-[380px] z-10"
             aria-hidden
           >
             <div className="bg-[#1c1c1e] rounded-[1.25rem] p-1.5 sm:rounded-[2.25rem] sm:p-2.5 md:rounded-[2.5rem] md:p-3 shadow-[0_25px_80px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(0,0,0,0.05)] w-full">
@@ -172,22 +172,22 @@ export default function HeroSection() {
               </div>
             </div>
           </motion.div>
-          <motion.div style={{ opacity: opacity1, y: y1 }} className="absolute inset-0 flex flex-col items-start justify-center pl-2 pr-3 sm:pl-4 md:pl-6 lg:pl-4 lg:-ml-16 w-full lg:w-1/2">
-            <div className="relative sm:-ml-4 pr-3 sm:pr-8 pt-3 sm:pt-6 pb-3 sm:pb-6 pl-3 sm:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw]">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-sans font-semibold tracking-tight text-black mb-3 sm:mb-5" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 24px rgba(0,0,0,0.06)' }}>Your Trip<br/>Begins Here</h2>
-              <p className="text-base sm:text-lg md:text-lg lg:text-xl text-black/70 font-medium leading-relaxed max-w-sm" style={{ letterSpacing: '0.015em' }}>Dream it. Map it. Live it.</p>
+          <motion.div style={{ opacity: opacity1, y: y1 }} className="absolute inset-0 flex flex-col items-start justify-center pl-2 pr-3 sm:pl-4 md:pl-6 md:pr-6 lg:pl-10 lg:pr-8 xl:pl-12 xl:-ml-8 2xl:-ml-16 w-full md:max-w-[85vw] lg:w-[48%] lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl">
+            <div className="relative sm:-ml-4 pr-3 sm:pr-6 md:pr-8 pt-3 sm:pt-5 md:pt-6 pb-3 sm:pb-5 md:pb-6 pl-3 sm:pl-5 md:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw] md:max-w-xl lg:max-w-none w-full">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-sans font-semibold tracking-tight text-black mb-3 sm:mb-4 md:mb-5" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 24px rgba(0,0,0,0.06)' }}>Your Trip<br/>Begins Here</h2>
+              <p className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl text-black/70 font-medium leading-relaxed max-w-sm md:max-w-md lg:max-w-lg" style={{ letterSpacing: '0.015em' }}>Dream it. Map it. Live it.</p>
             </div>
           </motion.div>
-          <motion.div style={{ opacity: opacity2, y: y2 }} className="absolute inset-0 flex flex-col items-start justify-start pt-[10vh] sm:pt-[16vh] md:pt-[18vh] lg:pt-[20vh] pl-2 pr-3 sm:pl-4 md:pl-6 lg:pl-4 lg:-ml-16 w-full lg:w-1/2">
-            <div className="relative sm:-ml-4 pr-3 sm:pr-8 pt-3 sm:pt-6 pb-3 sm:pb-6 pl-3 sm:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw]">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-sans font-semibold tracking-tight text-black mb-3 sm:mb-5 text-left" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 24px rgba(0,0,0,0.06)' }}>Build your own itinerary</h2>
-              <p className="text-base sm:text-lg md:text-lg lg:text-xl text-black/70 font-medium leading-relaxed max-w-[400px] text-left" style={{ letterSpacing: '0.015em' }}>Day by day, your perfect trip unfolds.</p>
+          <motion.div style={{ opacity: opacity2, y: y2 }} className="absolute inset-0 flex flex-col items-start justify-start pt-[10vh] sm:pt-[14vh] md:pt-[16vh] lg:pt-[18vh] xl:pt-[20vh] pl-2 pr-3 sm:pl-4 md:pl-6 md:pr-6 lg:pl-10 lg:pr-8 xl:pl-12 xl:-ml-8 2xl:-ml-16 w-full md:max-w-[85vw] lg:w-[48%] lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl">
+            <div className="relative sm:-ml-4 pr-3 sm:pr-6 md:pr-8 pt-3 sm:pt-5 md:pt-6 pb-3 sm:pb-5 md:pb-6 pl-3 sm:pl-5 md:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw] md:max-w-xl lg:max-w-none w-full">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-sans font-semibold tracking-tight text-black mb-3 sm:mb-4 md:mb-5 text-left" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 24px rgba(0,0,0,0.06)' }}>Build your own itinerary</h2>
+              <p className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl text-black/70 font-medium leading-relaxed max-w-[400px] md:max-w-md lg:max-w-lg text-left" style={{ letterSpacing: '0.015em' }}>Day by day, your perfect trip unfolds.</p>
             </div>
           </motion.div>
-          <motion.div style={{ opacity: opacity3, y: y3 }} className="absolute inset-0 flex flex-col items-start justify-end pb-4 sm:pb-8 md:pb-10 lg:pb-12 pl-2 pr-3 sm:pl-4 md:pl-6 lg:pl-4 lg:-ml-16 w-full lg:w-1/2">
-            <div className="relative sm:-ml-4 pr-3 sm:pr-8 pt-3 sm:pt-6 pb-3 sm:pb-6 pl-3 sm:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw]">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-sans font-semibold tracking-tight text-black mb-3 sm:mb-4 text-left" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 24px rgba(0,0,0,0.06)' }}>Your Adventure Awaits</h2>
-              <p className="text-base sm:text-lg md:text-lg lg:text-xl text-black/70 font-medium text-left mb-4 sm:mb-6 lg:mb-10" style={{ letterSpacing: '0.015em' }}>Your next adventure starts with one tap.</p>
+          <motion.div style={{ opacity: opacity3, y: y3 }} className="absolute inset-0 flex flex-col items-start justify-end pb-4 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 pl-2 pr-3 sm:pl-4 md:pl-6 md:pr-6 lg:pl-10 lg:pr-8 xl:pl-12 xl:-ml-8 2xl:-ml-16 w-full md:max-w-[85vw] lg:w-[48%] lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl">
+            <div className="relative sm:-ml-4 pr-3 sm:pr-6 md:pr-8 pt-3 sm:pt-5 md:pt-6 pb-3 sm:pb-5 md:pb-6 pl-3 sm:pl-5 md:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw] md:max-w-xl lg:max-w-none w-full">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-sans font-semibold tracking-tight text-black mb-3 sm:mb-4 text-left" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 24px rgba(0,0,0,0.06)' }}>Your Adventure Awaits</h2>
+              <p className="text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl text-black/70 font-medium text-left mb-4 sm:mb-6 md:mb-8 lg:mb-10 max-w-md md:max-w-lg lg:max-w-xl" style={{ letterSpacing: '0.015em' }}>Your next adventure starts with one tap.</p>
               <div className="pointer-events-auto">
                 <a href="#download" className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 text-sm sm:text-base bg-black text-white rounded-full font-medium tracking-wide hover:bg-emerald-700 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-black/10 group">
                   <span>Start Planning</span>
