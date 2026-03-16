@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useScroll, useTransform, motion, useSpring } from 'framer-motion'
 import guideme42icon from '../assets/guideme42icon.png'
+import appScreenImg from '../assets/features/f1.PNG'
 
 const TOTAL_FRAMES = 240
 const MIN_FRAMES_TO_SHOW = 5
@@ -144,6 +145,7 @@ export default function HeroSection() {
           </div>
         )}
         <div className="absolute inset-0 pointer-events-none z-10 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
+          {/* GuideMe42 text + iPhone frame: same animation, disappear together */}
           <motion.div style={{ opacity: opacity0, y: y0 }} className="absolute inset-0 flex flex-col items-start justify-start pt-[10vh] sm:pt-[16vh] md:pt-[18vh] lg:pt-[20vh] pl-2 pr-3 sm:pl-4 md:pl-6 lg:pl-4 lg:-ml-16">
             <div className="relative -mt-2 sm:-ml-4 pr-3 sm:pr-8 pt-3 sm:pt-6 pb-3 sm:pb-6 pl-3 sm:pl-6 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border-l-4 border-[#059669] shadow-[0_8px_32px_rgba(0,0,0,0.08)] max-w-[95vw]">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-sans text-left tracking-tight mb-2 sm:mb-4 flex items-center gap-2 sm:gap-3" style={{ fontFamily: 'Poppins, sans-serif', textShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
@@ -151,6 +153,23 @@ export default function HeroSection() {
                 <span><span className="text-black font-semibold">GuideMe</span><span className="text-[#059669] font-semibold">42</span></span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/70 font-medium tracking-wide text-left max-w-md" style={{ letterSpacing: '0.02em' }}>Plot your path. Pack your bags. Go.</p>
+            </div>
+          </motion.div>
+          {/* iPhone frame – right on sm+, below title on mobile; disappears with GuideMe42 text (opacity0, y0) */}
+          <motion.div
+            style={{ opacity: opacity0, y: y0 }}
+            className="absolute right-2 top-[34vh] w-[180px] max-w-[50vw] sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:max-w-none sm:w-[200px] md:right-8 md:w-[260px] lg:right-12 lg:w-[320px] xl:right-16 z-10"
+            aria-hidden
+          >
+            <div className="bg-[#1c1c1e] rounded-[1.25rem] p-1.5 sm:rounded-[2.25rem] sm:p-2.5 md:rounded-[2.5rem] md:p-3 shadow-[0_25px_80px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(0,0,0,0.05)] w-full">
+              <div className="relative rounded-[1rem] sm:rounded-[1.5rem] md:rounded-[1.75rem] overflow-hidden bg-black aspect-[9/20]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[28%] max-w-[40px] sm:max-w-[60px] h-4 sm:h-6 bg-[#1c1c1e] rounded-b-lg sm:rounded-b-xl z-10" aria-hidden />
+                <img
+                  src={appScreenImg}
+                  alt=""
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
             </div>
           </motion.div>
           <motion.div style={{ opacity: opacity1, y: y1 }} className="absolute inset-0 flex flex-col items-start justify-center pl-2 pr-3 sm:pl-4 md:pl-6 lg:pl-4 lg:-ml-16 w-full lg:w-1/2">
